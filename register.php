@@ -1,4 +1,5 @@
 <?php
+    include("menu.php");
     include("db-connection.php");
     
 ?>

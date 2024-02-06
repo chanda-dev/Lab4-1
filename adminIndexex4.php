@@ -1,14 +1,14 @@
 <?php
     session_start();
-    ;
-    if(isset($_SESSION['logedin'])){
+    
+    if(isset($_SESSION['adminLogedin']) == "SUCCESS"){
         echo "<script> console.log('Login seccess fully')</script>";
         
     }else{
         header("Location:login.php"); 
     }
-    include("menu.php");
-    include_once("db-connection.php")
+    include("adminMenu.php");
+    include_once("db-connection.php");
 ?>
 <body>
     <div class="container w3-animate-left dd">

@@ -1,13 +1,13 @@
 <?php
     session_start();
-
-    if(isset($_SESSION['logedin'])){
+   
+    if(isset($_SESSION['adminLogedin']) == "SUCCESS"){
         echo "<script> console.log('Login seccess fully')</script>";
         
     }else{
         header("Location:login.php"); 
     }
-    include("menu.php");
+    include("adminMenu.php");
     include_once("db-connection.php");
 ?>
 <body>
@@ -37,13 +37,12 @@
                     <th>Price</th>
                     <th>Category ID</th>
                     <th>Desription</th>
-                    <th>Image</th>
                     <th>Image Id</th>
-                   
+                    <th>Image</th>
                 </tr>
             </thead>
             <tbody>";
-                    while($row2 && $row) {
+            while($row) {
                         $pro_id = $row["id"];
                         $pro_name = $row["name"];
                         $pro_price = $row["price"];
@@ -52,20 +51,20 @@
                         $image_id = $row["image_id"];     
                         $img = $row2["picture_url"];  
                         $row = $data->fetch_assoc();    
-                        $row2 = $data2->fetch_assoc();
+                        
+                    
                     echo "<tr>
                             <td>$pro_id</td>
                             <td>$pro_name</td>
                             <td>$pro_price</td>
                             <td>$category_id</td>
                             <td>$pro_description</td>
+                            <td> $image_id </td>
                             <td> 
                             <a href='product_detail.php?id=$pro_id&name=$pro_name&price=$pro_price&category_id=$category_id&img=$img&desription=$pro_description'> 
                                 <img src = '$img' title = 'click image to view detail'  height = 40px></a> 
-                            </td>
-                            <td> $image_id </td>
-                            
-                        </tr>";
+                       </td>
+                       </tr>";
                         
             }
             }else{
@@ -74,7 +73,6 @@
             $stmt->close();
         }
         $con->close();
-        
                    
     ?>
       </tbody>

@@ -1,9 +1,8 @@
 
 <?php
 session_start();
-include("menu.php");
 include("db-connection.php");
-
+include("adminMenu.php");
 ?>
 <body>
     <div class="quote col-lg-4 col-md-4 col-sm-4 col-xs-4 w3-animate-zoom">
